@@ -191,3 +191,40 @@ if (heroSection) {
 }
 
 console.log("🚀 Сайт загружен. Все анимации активированы!");
+
+// FAQ Accordion
+const faqItems = document.querySelectorAll(".faq-item");
+faqItems.forEach((item) => {
+  const question = item.querySelector(".faq-question");
+  const answer = item.querySelector(".faq-answer");
+
+  // Скрываем ответы по умолчанию
+  if (answer) {
+    answer.style.display = "none";
+  }
+
+  question.addEventListener("click", () => {
+    const isOpen = answer.style.display === "block";
+
+    // Закрываем все
+    faqItems.forEach((otherItem) => {
+      const otherAnswer = otherItem.querySelector(".faq-answer");
+      if (otherAnswer) {
+        otherAnswer.style.display = "none";
+      }
+    });
+
+    // Открываем текущий
+    if (!isOpen && answer) {
+      answer.style.display = "block";
+    }
+  });
+});
+
+// Показываем первый FAQ открытым для примера
+if (faqItems[0]) {
+  const firstAnswer = faqItems[0].querySelector(".faq-answer");
+  if (firstAnswer) {
+    firstAnswer.style.display = "block";
+  }
+}

@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
-    <title>DevStudio | Разработка под ключ</title>
+    <title>DevStudio | Сайты, боты, приложения под ключ</title>
     <meta
       name="description"
       content="Разработка сайтов, Telegram ботов и мобильных приложений. Качественно, быстро и дешевле рынка в 3 раза."
@@ -39,6 +39,7 @@
           <a href="#services">Услуги</a>
           <a href="#cases">Кейсы</a>
           <a href="#pricing">Цены</a>
+          <a href="#advantages">Почему я</a>
           <a href="#contact" class="nav-cta">Связаться</a>
         </div>
         <div class="menu-toggle" id="menuToggle">
@@ -48,6 +49,7 @@
     </nav>
 
     <main>
+      <!-- ========== ГЛАВНЫЙ ЭКРАН ========== -->
       <section class="hero" id="hero">
         <div class="container hero-container">
           <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
@@ -61,7 +63,7 @@
             <p class="hero-subtitle">
               Делаю быстро, качественно и
               <strong>дешевле рынка в 3 раза</strong>. Современный дизайн,
-              чистый код, полное сопровождение.
+              чистый код, полное сопровождение 24/7.
             </p>
             <div class="hero-buttons">
               <a
@@ -78,13 +80,17 @@
             <div class="hero-stats">
               <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
                 <span class="stat-number">20+</span>
-                <span class="stat-label">проектов</span>
+                <span class="stat-label">реализованных проектов</span>
               </div>
               <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
                 <span class="stat-number">3 дня</span>
                 <span class="stat-label">минимальный срок</span>
               </div>
               <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">довольных клиентов</span>
+              </div>
+              <div class="stat-item" data-aos="fade-up" data-aos-delay="500">
                 <span class="stat-number">24/7</span>
                 <span class="stat-label">поддержка</span>
               </div>
@@ -97,6 +103,7 @@
         </div>
       </section>
 
+      <!-- ========== УСЛУГИ ========== -->
       <section class="services" id="services">
         <div class="container">
           <div class="section-header" data-aos="fade-up">
@@ -118,8 +125,15 @@
               </p>
               <ul class="service-features">
                 <li><i class="fas fa-check"></i> Aiogram / Telebot</li>
-                <li><i class="fas fa-check"></i> Интеграция с API</li>
-                <li><i class="fas fa-check"></i> Базы данных</li>
+                <li><i class="fas fa-check"></i> Интеграция с любыми API</li>
+                <li>
+                  <i class="fas fa-check"></i> Базы данных (PostgreSQL, MySQL)
+                </li>
+                <li><i class="fas fa-check"></i> Админ-панель в боте</li>
+                <li>
+                  <i class="fas fa-check"></i> Платежные системы (ЮKassa,
+                  Stripe)
+                </li>
               </ul>
             </div>
             <div
@@ -137,6 +151,10 @@
                 <li><i class="fas fa-check"></i> React / Vue / Чистый код</li>
                 <li><i class="fas fa-check"></i> Анимации и UI/UX</li>
                 <li><i class="fas fa-check"></i> Оптимизация SEO</li>
+                <li><i class="fas fa-check"></i> Интеграция с CRM</li>
+                <li>
+                  <i class="fas fa-check"></i> Скорость загрузки 95+ PageSpeed
+                </li>
               </ul>
             </div>
             <div
@@ -154,12 +172,18 @@
                 <li><i class="fas fa-check"></i> React Native / Flutter</li>
                 <li><i class="fas fa-check"></i> Push-уведомления</li>
                 <li><i class="fas fa-check"></i> Интеграция с сервером</li>
+                <li>
+                  <i class="fas fa-check"></i> Публикация в App Store и Google
+                  Play
+                </li>
+                <li><i class="fas fa-check"></i> Офлайн-режим</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- ========== КЕЙСЫ (ССЫЛКА НА КАНАЛ) ========== -->
       <section class="cases" id="cases">
         <div class="container">
           <div class="section-header" data-aos="fade-up">
@@ -181,6 +205,28 @@
                 Более 20 реализованных проектов: сайты, боты, приложения с
                 реальными результатами и отзывами
               </p>
+              <div class="cases-preview-grid">
+                <div class="case-preview-item">
+                  <i class="fas fa-gamepad"></i>
+                  <span>Mini App игра</span>
+                  <small>5000+ пользователей</small>
+                </div>
+                <div class="case-preview-item">
+                  <i class="fas fa-laptop-code"></i>
+                  <span>Сайт студии</span>
+                  <small>Конверсия +40%</small>
+                </div>
+                <div class="case-preview-item">
+                  <i class="fas fa-robot"></i>
+                  <span>Бот для задач</span>
+                  <small>Экономия 60% времени</small>
+                </div>
+                <div class="case-preview-item">
+                  <i class="fas fa-chart-line"></i>
+                  <span>Аналитика</span>
+                  <small>Дашборды</small>
+                </div>
+              </div>
               <a
                 href="https://t.me/Dob_Cases"
                 target="_blank"
@@ -188,17 +234,12 @@
               >
                 <i class="fab fa-telegram"></i> Перейти в канал с кейсами
               </a>
-              <div class="cases-preview">
-                <span>📱 Mini Apps</span>
-                <span>🌐 Сайты</span>
-                <span>🤖 Боты</span>
-                <span>📊 Кейсы</span>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- ========== ЦЕНЫ (НИЖЕ РЫНКА) ========== -->
       <section class="pricing" id="pricing">
         <div class="container">
           <div class="section-header" data-aos="fade-up">
@@ -219,6 +260,10 @@
                 <li><i class="fas fa-check"></i> Базовый функционал</li>
                 <li><i class="fas fa-check"></i> База данных</li>
                 <li><i class="fas fa-check"></i> Админ-панель</li>
+                <li><i class="fas fa-check"></i> Деплой на сервер</li>
+                <li>
+                  <i class="fas fa-check"></i> Инструкция по использованию
+                </li>
               </ul>
               <a
                 href="https://t.me/dev_master"
@@ -239,7 +284,9 @@
               <ul class="pricing-features">
                 <li><i class="fas fa-check"></i> Адаптивный дизайн</li>
                 <li><i class="fas fa-check"></i> Анимации</li>
-                <li><i class="fas fa-check"></i> SEO оптимизация</li>
+                <li><i class="fas fa-check"></i> Оптимизация SEO</li>
+                <li><i class="fas fa-check"></i> Формы + валидация</li>
+                <li><i class="fas fa-check"></i> SSL сертификат</li>
               </ul>
               <a
                 href="https://t.me/dev_master"
@@ -260,6 +307,8 @@
                 <li><i class="fas fa-check"></i> iOS + Android</li>
                 <li><i class="fas fa-check"></i> API интеграция</li>
                 <li><i class="fas fa-check"></i> Push-уведомления</li>
+                <li><i class="fas fa-check"></i> Публикация в сторах</li>
+                <li><i class="fas fa-check"></i> Поддержка 1 месяц</li>
               </ul>
               <a
                 href="https://t.me/dev_master"
@@ -272,37 +321,222 @@
         </div>
       </section>
 
+      <!-- ========== ПРЕИМУЩЕСТВА (ПОЧЕМУ Я) ========== -->
       <section class="advantages" id="advantages">
         <div class="container">
           <div class="section-header" data-aos="fade-up">
             <span class="section-tag">Преимущества</span>
             <h2>Почему выбирают меня</h2>
+            <p>Работаю на результат, а не на количество проектов</p>
           </div>
           <div class="advantages-grid">
             <div class="advantage-item" data-aos="zoom-in" data-aos-delay="100">
               <div class="advantage-icon"><i class="fas fa-rocket"></i></div>
               <h3>Быстро</h3>
-              <p>Средний срок разработки — от 3 до 10 дней</p>
+              <p>
+                Средний срок разработки — от 3 до 10 дней. Ценю ваше время и
+                дедлайны. Начинаю работу сразу после оплаты.
+              </p>
             </div>
             <div class="advantage-item" data-aos="zoom-in" data-aos-delay="200">
               <div class="advantage-icon"><i class="fas fa-coins"></i></div>
               <h3>Дешево</h3>
-              <p>Цены ниже рынка в 3 раза без потери качества</p>
+              <p>
+                Цены ниже рынка в 3 раза без потери качества. Работаю напрямую,
+                без посредников. Фиксированная стоимость, без скрытых платежей.
+              </p>
             </div>
             <div class="advantage-item" data-aos="zoom-in" data-aos-delay="300">
               <div class="advantage-icon"><i class="fas fa-gem"></i></div>
               <h3>Современно</h3>
-              <p>Стеклянный дизайн, неон, анимации, трендовый UI</p>
+              <p>
+                Только актуальные технологии: React, Next.js, Node.js, Python,
+                Aiogram. Стеклянный дизайн, неон, анимации, трендовый UI/UX.
+              </p>
             </div>
             <div class="advantage-item" data-aos="zoom-in" data-aos-delay="400">
               <div class="advantage-icon"><i class="fas fa-headset"></i></div>
               <h3>Поддержка</h3>
-              <p>Бесплатное сопровождение 1 месяц. Всегда на связи</p>
+              <p>
+                Бесплатное сопровождение 1 месяц. Отвечаю в Telegram в течение
+                часа. Помогаю с настройкой и доработками после сдачи проекта.
+              </p>
+            </div>
+            <div class="advantage-item" data-aos="zoom-in" data-aos-delay="500">
+              <div class="advantage-icon"><i class="fas fa-code"></i></div>
+              <h3>Чистый код</h3>
+              <p>
+                Пишу понятный, документированный код. Легко поддерживать и
+                дорабатывать. Соблюдаю best practices и стандарты.
+              </p>
+            </div>
+            <div class="advantage-item" data-aos="zoom-in" data-aos-delay="600">
+              <div class="advantage-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3>Результат</h3>
+              <p>
+                Ориентируюсь на бизнес-показатели: рост продаж, конверсия,
+                автоматизация. Делаю не просто код, а рабочий инструмент.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- ========== КАК Я РАБОТАЮ ========== -->
+      <section class="process">
+        <div class="container">
+          <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Процесс</span>
+            <h2>Как мы работаем</h2>
+            <p>Прозрачно, быстро и без лишних сложностей</p>
+          </div>
+          <div class="process-steps">
+            <div
+              class="process-step"
+              data-aos="fade-right"
+              data-aos-delay="100"
+            >
+              <div class="step-number">01</div>
+              <div class="step-content">
+                <h3>Обсуждение</h3>
+                <p>
+                  Разбираем задачу, составляем ТЗ, определяем сроки и стоимость
+                </p>
+              </div>
+            </div>
+            <div
+              class="process-step"
+              data-aos="fade-right"
+              data-aos-delay="200"
+            >
+              <div class="step-number">02</div>
+              <div class="step-content">
+                <h3>Дизайн</h3>
+                <p>Создаю прототип и дизайн-макет, согласовываем внешний вид</p>
+              </div>
+            </div>
+            <div
+              class="process-step"
+              data-aos="fade-right"
+              data-aos-delay="300"
+            >
+              <div class="step-number">03</div>
+              <div class="step-content">
+                <h3>Разработка</h3>
+                <p>Пишу код, тестирую, показываю промежуточные результаты</p>
+              </div>
+            </div>
+            <div
+              class="process-step"
+              data-aos="fade-right"
+              data-aos-delay="400"
+            >
+              <div class="step-number">04</div>
+              <div class="step-content">
+                <h3>Запуск</h3>
+                <p>
+                  Деплой на сервер, финальное тестирование, передача проекта
+                </p>
+              </div>
+            </div>
+            <div
+              class="process-step"
+              data-aos="fade-right"
+              data-aos-delay="500"
+            >
+              <div class="step-number">05</div>
+              <div class="step-content">
+                <h3>Поддержка</h3>
+                <p>Бесплатное сопровождение 1 месяц, помогаю с доработками</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ ========== -->
+      <section class="faq">
+        <div class="container">
+          <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">FAQ</span>
+            <h2>Часто задаваемые вопросы</h2>
+            <p>Отвечаю на самые популярные вопросы</p>
+          </div>
+          <div class="faq-grid">
+            <div
+              class="faq-item glass-card"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                <h3>Как происходит оплата?</h3>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Предоплата 50% на карту или по реквизитам ИП. Остальные 50%
+                  после сдачи проекта. Работаю с физлицами и юрлицами, даю все
+                  закрывающие документы.
+                </p>
+              </div>
+            </div>
+            <div
+              class="faq-item glass-card"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                <h3>Какие гарантии?</h3>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Даю гарантию 1 месяц на бесплатное исправление ошибок. В
+                  течение этого времени оперативно решаю любые возникшие
+                  вопросы.
+                </p>
+              </div>
+            </div>
+            <div
+              class="faq-item glass-card"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                <h3>Можно увидеть примеры работ?</h3>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Да, все кейсы собраны в Telegram-канале:
+                  <a href="https://t.me/Dob_Cases" target="_blank">@Dob_Cases</a
+                  >. Там более 20 проектов с описанием и результатами.
+                </p>
+              </div>
+            </div>
+            <div
+              class="faq-item glass-card"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                <h3>Сколько времени занимает разработка?</h3>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Бот — от 3 дней, сайт — от 5 дней, приложение — от 10 дней.
+                  Сроки зависят от сложности и согласовываются до начала работ.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== CTA ========== -->
       <section class="cta" id="contact">
         <div class="container">
           <div
@@ -313,36 +547,77 @@
             <h2>Напиши мне — обсудим проект</h2>
             <p>
               Расскажите о своей идее, и я предложу оптимальное решение в
-              течение часа
+              течение часа.<br />Бесплатная консультация — без обязательств.
             </p>
-            <a
-              href="https://t.me/dev_master"
-              target="_blank"
-              class="btn btn-primary btn-large"
-            >
-              <i class="fab fa-telegram"></i> Написать в Telegram
-            </a>
+            <div class="cta-buttons">
+              <a
+                href="https://t.me/dev_master"
+                target="_blank"
+                class="btn btn-primary btn-large"
+              >
+                <i class="fab fa-telegram"></i> Написать в Telegram
+              </a>
+              <a href="#faq" class="btn btn-outline btn-large">
+                <i class="fas fa-question"></i> Частые вопросы
+              </a>
+            </div>
+            <div class="cta-contact-info">
+              <span><i class="fas fa-clock"></i> Отвечаю в течение часа</span>
+              <span><i class="fas fa-shield-alt"></i> Работаю официально</span>
+              <span><i class="fas fa-ruble-sign"></i> Фиксированные цены</span>
+            </div>
           </div>
         </div>
       </section>
 
+      <!-- Footer -->
       <footer class="footer">
         <div class="container">
           <div class="footer-content">
             <div class="footer-logo">
               <h3>Dev<span>Studio</span></h3>
               <p>Создаю цифровые продукты, которые работают</p>
+              <div class="footer-contacts">
+                <a href="https://t.me/dev_master" target="_blank"
+                  ><i class="fab fa-telegram"></i> @dev_master</a
+                >
+                <a href="mailto:dev@example.com"
+                  ><i class="fas fa-envelope"></i> dev@example.com</a
+                >
+              </div>
+            </div>
+            <div class="footer-links">
+              <h4>Навигация</h4>
+              <a href="#services">Услуги</a>
+              <a href="#cases">Кейсы</a>
+              <a href="#pricing">Цены</a>
+              <a href="#advantages">Преимущества</a>
+            </div>
+            <div class="footer-links">
+              <h4>Полезное</h4>
+              <a href="https://t.me/Dob_Cases" target="_blank"
+                >Канал с кейсами</a
+              >
+              <a href="#faq">FAQ</a>
+              <a href="#contact">Связаться</a>
             </div>
             <div class="footer-social">
-              <a href="https://t.me/dev_master" target="_blank"
-                ><i class="fab fa-telegram"></i
-              ></a>
-              <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-              <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <h4>Соцсети</h4>
+              <div class="social-icons">
+                <a href="https://t.me/dev_master" target="_blank"
+                  ><i class="fab fa-telegram"></i
+                ></a>
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+              </div>
             </div>
           </div>
           <div class="footer-bottom">
-            <p>© 2025 DevStudio. Все права защищены.</p>
+            <p>
+              © 2025 DevStudio. Все права защищены. Разработка сайтов, ботов и
+              приложений.
+            </p>
           </div>
         </div>
       </footer>
