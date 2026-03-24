@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         navLinks.style.backdropFilter = "blur(12px)";
         navLinks.style.padding = "20px";
         navLinks.style.gap = "20px";
+        navLinks.style.zIndex = "999";
       }
     });
   }
@@ -54,28 +55,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
+        entry.target.classList.add("visible");
         observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
 
-  // Наблюдаем за всеми секциями и карточками
+  // Наблюдаем за всеми карточками
   const elementsToAnimate = document.querySelectorAll(
-    ".service-card, .case-card, .pricing-card, .advantage-item, .cta-content",
+    ".service-card, .pricing-card, .advantage-item",
   );
 
   elementsToAnimate.forEach((el) => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(30px)";
-    el.style.transition = "all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1)";
     observer.observe(el);
   });
 
   // ========== NAVBAR SCROLL EFFECT ==========
   const navbar = document.querySelector(".navbar");
-  let lastScroll = 0;
 
   window.addEventListener("scroll", () => {
     const currentScroll = window.pageYOffset;
@@ -86,11 +82,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       navbar.style.background = "rgba(10, 12, 21, 0.85)";
     }
-
-    lastScroll = currentScroll;
   });
 
-  // ========== HOVER PARALLAX FOR CARDS (optional) ==========
+  // ========== HOVER PARALLAX FOR CARDS ==========
   const cards = document.querySelectorAll(".glass-card");
   cards.forEach((card) => {
     card.addEventListener("mousemove", (e) => {
@@ -111,14 +105,53 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ========== TELEGRAM BUTTON TRACKING (можно добавить аналитику) ==========
+  // ========== TELEGRAM BUTTON TRACKING ==========
   const tgButtons = document.querySelectorAll('a[href*="t.me"]');
   tgButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      console.log("Telegram клик: переход на связь");
-      // Здесь можно добавить аналитику
+      console.log("📱 Переход в Telegram");
     });
   });
 
-  console.log("Сайт загружен. Анимации и эффекты активированы.");
+  // ========== АНИМАЦИЯ ДЛЯ СТАТИСТИКИ ==========
+  const animateNumbers = () => {
+    const statNumbers = document.querySelectorAll(".stat-number");
+    statNumbers.forEach((stat) => {
+      const target = parseInt(stat.innerText);
+      if (!stat.hasAttribute("data-animated")) {
+        stat.setAttribute("data-animated", "true");
+        let current = 0;
+        const increment = target / 30;
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            stat.innerText = target;
+            clearInterval(timer);
+          } else {
+            stat.innerText = Math.floor(current);
+          }
+        }, 30);
+      }
+    });
+  };
+
+  // Запускаем анимацию чисел при появлении секции hero
+  const heroObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateNumbers();
+          heroObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 },
+  );
+
+  const heroSection = document.querySelector(".hero");
+  if (heroSection) {
+    heroObserver.observe(heroSection);
+  }
+
+  console.log("🚀 Сайт загружен. Все анимации активированы!");
 });

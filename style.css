@@ -209,6 +209,8 @@ body {
   text-decoration: none;
   transition: var(--transition);
   cursor: pointer;
+  border: none;
+  font-size: 1rem;
 }
 
 .btn-primary {
@@ -653,5 +655,216 @@ section {
 
   .cta-content {
     padding: 40px 20px;
+  }
+
+  .pricing-card.popular {
+    transform: scale(1);
+  }
+}
+
+/* ========== CASE RESULTS (дополнительно для кейсов) ========== */
+.case-results {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.result-badge {
+  display: inline-block;
+  background: rgba(59, 75, 255, 0.2);
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  color: var(--neon-blue);
+  border: 1px solid rgba(59, 75, 255, 0.3);
+}
+
+/* ========== CASES TELEGRAM CARD ========== */
+.cases-showcase {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cases-telegram-card {
+  text-align: center;
+  padding: 48px 32px;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 75, 255, 0.15),
+    rgba(157, 78, 221, 0.1)
+  );
+  border: 1px solid rgba(59, 75, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.cases-telegram-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(59, 75, 255, 0.1), transparent 70%);
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cases-telegram-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  color: var(--neon-blue);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.cases-telegram-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  background: var(--gradient-1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.cases-telegram-card p {
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  font-size: 1.1rem;
+}
+
+.cases-preview {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cases-preview span {
+  background: rgba(59, 75, 255, 0.2);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  border: 1px solid rgba(59, 75, 255, 0.3);
+  transition: var(--transition);
+}
+
+.cases-preview span:hover {
+  transform: scale(1.05);
+  background: rgba(59, 75, 255, 0.4);
+  border-color: var(--neon-blue);
+}
+
+/* ========== ДОПОЛНИТЕЛЬНЫЕ АНИМАЦИИ ========== */
+/* Пульсация для кнопок */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(59, 75, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 75, 255, 0.6);
+  }
+}
+
+.btn-primary {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.btn-primary:hover {
+  animation: none;
+}
+
+/* Анимация появления для карточек при скролле */
+.service-card,
+.pricing-card,
+.advantage-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.service-card.visible,
+.pricing-card.visible,
+.advantage-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Эффект свечения при наведении */
+.glass-card {
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.glass-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(59, 75, 255, 0.2);
+  border-color: rgba(59, 75, 255, 0.8);
+}
+
+/* Анимация для заголовков */
+.section-header h2 {
+  position: relative;
+  display: inline-block;
+}
+
+.section-header h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--gradient-1);
+  border-radius: 3px;
+  animation: expandWidth 0.6s ease-out;
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 60px;
+    opacity: 1;
+  }
+}
+
+/* Анимация для статистики */
+.stat-number {
+  animation: countUp 1s ease-out;
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
