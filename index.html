@@ -34,7 +34,6 @@
         scroll-behavior: smooth;
       }
 
-      /* плавное появление */
       .fade-up {
         opacity: 0;
         transform: translateY(24px);
@@ -47,7 +46,6 @@
         transform: translateY(0);
       }
 
-      /* анимация заголовка */
       @keyframes titleReveal {
         0% {
           opacity: 0;
@@ -66,7 +64,6 @@
         animation: titleReveal 0.8s cubic-bezier(0.2, 0.9, 0.4, 1) forwards;
       }
 
-      /* кастомный скролл */
       ::-webkit-scrollbar {
         width: 5px;
       }
@@ -139,12 +136,12 @@
         cursor: pointer;
       }
 
-      /* герой */
+      /* герой — текст поднят высоко */
       .hero {
-        min-height: 90vh;
+        min-height: auto;
         display: flex;
         align-items: center;
-        padding: 130px 0 70px;
+        padding: 60px 0 20px;
       }
       .hero-content {
         max-width: 880px;
@@ -180,7 +177,7 @@
         display: flex;
         gap: 18px;
         flex-wrap: wrap;
-        margin-bottom: 56px;
+        margin-bottom: 48px;
       }
       .btn {
         display: inline-flex;
@@ -226,13 +223,13 @@
         color: #8f9bb5;
       }
 
-      /* секции */
+      /* секции — общий padding уменьшен, а первый блок поднят ещё выше */
       section {
-        padding: 80px 0;
+        padding: 60px 0;
       }
       .section-header {
         text-align: center;
-        margin-bottom: 56px;
+        margin-bottom: 48px;
       }
       .section-tag {
         display: inline-block;
@@ -252,6 +249,11 @@
       .section-header p {
         color: #8f9bb5;
         font-size: 0.9rem;
+      }
+
+      /* первый блок после hero — почти вплотную */
+      #services {
+        padding-top: 20px;
       }
 
       /* карточки */
@@ -508,10 +510,13 @@
           gap: 12px;
         }
         section {
-          padding: 60px 0;
+          padding: 40px 0;
         }
         .hero {
-          padding: 110px 0 50px;
+          padding: 50px 0 10px;
+        }
+        #services {
+          padding-top: 10px;
         }
         .stats {
           gap: 32px;
