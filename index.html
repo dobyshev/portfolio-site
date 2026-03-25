@@ -1,400 +1,799 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>DevStudio | Разработка сайтов, ботов и приложений под ключ</title>
-    <meta name="description" content="Разработка сайтов, Telegram ботов и мобильных приложений. Качественно, быстро и дешевле рынка в 3 раза.">
-    
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>DevStudio — разработка под ключ</title>
+    <meta
+      name="description"
+      content="Создаю сайты, Telegram-ботов и приложения. Быстро, качественно, дешевле рынка в 3 раза."
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <style>
-        /* FALLBACK STYLES - на случай если style.css не загрузится */
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background: #0a0c15;
-            color: #edf2ff;
-        }
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #3b4bff, #9d4edd);
-            color: white;
-            padding: 14px 36px;
-            border-radius: 60px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #3b4bff, #9d4edd);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-    </style>
-</head>
-<body>
-    <div class="cursor-glow"></div>
-    <canvas id="particleCanvas"></canvas>
-    <div class="gradient-bg"></div>
-    <div class="noise-overlay"></div>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
+      body {
+        background-color: #0b0b0f;
+        font-family: "Inter", sans-serif;
+        color: #eff3ff;
+        line-height: 1.4;
+        scroll-behavior: smooth;
+      }
+
+      /* плавное появление для всех секций */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1),
+          transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1);
+      }
+
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      /* навигация */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(11, 11, 15, 0.85);
+        backdrop-filter: blur(12px);
+        z-index: 100;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(91, 60, 255, 0.2);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: white;
+        letter-spacing: -0.02em;
+      }
+
+      .logo span {
+        color: #5b3cff;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: #b4c0e0;
+        text-decoration: none;
+        font-weight: 450;
+        transition: 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: #5b3cff;
+      }
+
+      .nav-cta {
+        background: rgba(91, 60, 255, 0.12);
+        padding: 8px 20px;
+        border-radius: 40px;
+        border: 1px solid rgba(91, 60, 255, 0.5);
+      }
+
+      .menu-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* герой */
+      .hero {
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        padding: 140px 0 80px;
+      }
+
+      .hero-content {
+        max-width: 900px;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background: rgba(91, 60, 255, 0.1);
+        padding: 6px 16px;
+        border-radius: 100px;
+        font-size: 0.8rem;
+        margin-bottom: 24px;
+        color: #8f74ff;
+      }
+
+      .hero-title {
+        font-size: clamp(2.8rem, 6vw, 4.8rem);
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 24px;
+        letter-spacing: -0.02em;
+      }
+
+      .hero-title .accent {
+        color: #5b3cff;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+        color: #b4c0e0;
+        margin-bottom: 40px;
+        max-width: 600px;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 60px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 32px;
+        border-radius: 40px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: 0.2s ease;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+      }
+
+      .btn-primary {
+        background: #5b3cff;
+        border: none;
+        box-shadow: 0 8px 20px rgba(91, 60, 255, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        background: #4a2cd8;
+        box-shadow: 0 12px 25px rgba(91, 60, 255, 0.4);
+      }
+
+      .btn-outline:hover {
+        border-color: #5b3cff;
+        background: rgba(91, 60, 255, 0.05);
+      }
+
+      .stats {
+        display: flex;
+        gap: 48px;
+        flex-wrap: wrap;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #5b3cff;
+      }
+
+      .stat-label {
+        font-size: 0.85rem;
+        color: #8f9bb5;
+      }
+
+      /* секции */
+      section {
+        padding: 100px 0;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 64px;
+      }
+
+      .section-tag {
+        display: inline-block;
+        background: rgba(91, 60, 255, 0.1);
+        padding: 4px 12px;
+        border-radius: 40px;
+        font-size: 0.75rem;
+        margin-bottom: 16px;
+        color: #8f74ff;
+      }
+
+      .section-header h2 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .section-header p {
+        color: #8f9bb5;
+        font-size: 1rem;
+      }
+
+      /* карточки */
+      .services-grid,
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+      }
+
+      .card {
+        background: #111216;
+        border-radius: 32px;
+        padding: 32px;
+        transition: 0.3s ease;
+        border: 1px solid #1e2028;
+      }
+
+      .card:hover {
+        transform: translateY(-6px);
+        border-color: #5b3cff;
+        box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.5);
+      }
+
+      .card-icon {
+        font-size: 2.4rem;
+        margin-bottom: 20px;
+        color: #5b3cff;
+      }
+
+      .card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+        font-weight: 500;
+      }
+
+      .card p {
+        color: #a0a8c0;
+        margin-bottom: 24px;
+        line-height: 1.5;
+      }
+
+      .feature-list {
+        list-style: none;
+      }
+
+      .feature-list li {
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+        color: #b4c0e0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .feature-list i {
+        color: #5b3cff;
+        font-size: 0.8rem;
+      }
+
+      /* кейс — телеграм карточка */
+      .cases-showcase {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .telegram-card {
+        background: #111216;
+        border-radius: 48px;
+        padding: 48px 40px;
+        text-align: center;
+        border: 1px solid #262a36;
+        transition: 0.3s ease;
+      }
+
+      .telegram-card:hover {
+        border-color: #5b3cff;
+        transform: scale(1.01);
+      }
+
+      .telegram-icon {
+        font-size: 3rem;
+        color: #5b3cff;
+        margin-bottom: 20px;
+      }
+
+      .telegram-card h3 {
+        font-size: 1.8rem;
+        font-weight: 500;
+        margin-bottom: 16px;
+      }
+
+      .telegram-card p {
+        color: #a0a8c0;
+        margin-bottom: 32px;
+      }
+
+      .case-tags {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin: 32px 0 24px;
+        flex-wrap: wrap;
+      }
+
+      .case-tags span {
+        background: #1a1c24;
+        padding: 6px 16px;
+        border-radius: 40px;
+        font-size: 0.8rem;
+      }
+
+      /* преимущества */
+      .advantages-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 40px;
+        text-align: center;
+      }
+
+      .advantage-icon {
+        font-size: 2rem;
+        color: #5b3cff;
+        margin-bottom: 20px;
+      }
+
+      /* CTA */
+      .cta-block {
+        background: #111216;
+        border-radius: 48px;
+        padding: 64px 40px;
+        text-align: center;
+        border: 1px solid #262a36;
+      }
+
+      .cta-block h2 {
+        font-size: 2rem;
+        margin-bottom: 16px;
+      }
+
+      .cta-block p {
+        color: #a0a8c0;
+        margin-bottom: 32px;
+      }
+
+      /* футер */
+      .footer {
+        border-top: 1px solid #1e2028;
+        padding: 60px 0 30px;
+        margin-top: 40px;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 32px;
+      }
+
+      .footer-logo h3 {
+        font-size: 1.4rem;
+      }
+
+      .footer-logo span {
+        color: #5b3cff;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 32px;
+      }
+
+      .footer-links a {
+        color: #a0a8c0;
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      .footer-links a:hover {
+        color: #5b3cff;
+      }
+
+      .footer-social a {
+        color: #a0a8c0;
+        font-size: 1.4rem;
+        margin-left: 20px;
+        transition: 0.2s;
+      }
+
+      .footer-social a:hover {
+        color: #5b3cff;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #1e2028;
+        color: #5f6a84;
+        font-size: 0.8rem;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 24px;
+        }
+        .nav-links {
+          display: none;
+        }
+        .menu-toggle {
+          display: block;
+        }
+        .hero-buttons {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .btn {
+          justify-content: center;
+        }
+        .footer-content {
+          flex-direction: column;
+          text-align: center;
+        }
+        .footer-links {
+          flex-direction: column;
+          align-items: center;
+          gap: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
     <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">Dev<span>Studio</span></a>
-            <div class="nav-links">
-                <a href="#services">Услуги</a>
-                <a href="#cases">Кейсы</a>
-                <a href="#pricing">Цены</a>
-                <a href="#advantages">Почему я</a>
-                <a href="#contact" class="nav-cta">Связаться</a>
-            </div>
-            <div class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </div>
+      <div class="container nav-container">
+        <a href="#" class="logo">Dev<span>Studio</span></a>
+        <div class="nav-links">
+          <a href="#services">Услуги</a>
+          <a href="#cases">Кейсы</a>
+          <a href="#pricing">Цены</a>
+          <a href="#advantages">Почему я</a>
+          <a href="#contact" class="nav-cta">Связаться</a>
         </div>
+        <div class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
     </nav>
 
     <main>
-        <!-- HERO -->
-        <section class="hero" id="hero">
-            <div class="container hero-container">
-                <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="hero-badge">
-                        <i class="fas fa-bolt"></i> Премиум качество · Доступные цены
-                    </div>
-                    <h1 class="hero-title">
-                        Разработка сайтов,<br>
-                        ботов и приложений <span class="gradient-text">под ключ</span>
-                    </h1>
-                    <p class="hero-subtitle">
-                        Делаю быстро, качественно и <strong>дешевле рынка в 3 раза</strong>. 
-                        Современный дизайн, чистый код, полное сопровождение 24/7.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="https://t.me/dev_master" target="_blank" class="btn btn-primary">
-                            <i class="fab fa-telegram"></i> Написать в Telegram
-                        </a>
-                        <a href="#cases" class="btn btn-outline">
-                            <i class="fas fa-arrow-right"></i> Смотреть работы
-                        </a>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-                            <span class="stat-number">20+</span>
-                            <span class="stat-label">реализованных проектов</span>
-                        </div>
-                        <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-                            <span class="stat-number">3 дня</span>
-                            <span class="stat-label">минимальный срок</span>
-                        </div>
-                        <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">довольных клиентов</span>
-                        </div>
-                        <div class="stat-item" data-aos="fade-up" data-aos-delay="500">
-                            <span class="stat-number">24/7</span>
-                            <span class="stat-label">поддержка</span>
-                        </div>
-                    </div>
-                </div>
+      <section class="hero">
+        <div class="container hero-content">
+          <div class="hero-badge fade-up">
+            ⭐ Премиум качество · Доступные цены
+          </div>
+          <h1 class="hero-title fade-up">
+            Разработка сайтов, ботов <br />
+            и приложений <span class="accent">под ключ</span>
+          </h1>
+          <p class="hero-subtitle fade-up">
+            Делаю быстро, качественно и <strong>дешевле рынка в 3 раза</strong>.
+            Современный дизайн, чистый код, полное сопровождение.
+          </p>
+          <div class="hero-buttons fade-up">
+            <a
+              href="https://t.me/dev_master"
+              target="_blank"
+              class="btn btn-primary"
+              ><i class="fab fa-telegram"></i> Написать в Telegram</a
+            >
+            <a href="#cases" class="btn btn-outline"
+              ><i class="fas fa-arrow-right"></i> Смотреть работы</a
+            >
+          </div>
+          <div class="stats fade-up">
+            <div>
+              <div class="stat-number">20+</div>
+              <div class="stat-label">проектов</div>
             </div>
-            <div class="scroll-indicator">
-                <span>Скролл</span>
-                <i class="fas fa-chevron-down"></i>
+            <div>
+              <div class="stat-number">3 дня</div>
+              <div class="stat-label">мин. срок</div>
             </div>
-        </section>
+            <div>
+              <div class="stat-number">24/7</div>
+              <div class="stat-label">поддержка</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- УСЛУГИ -->
-        <section class="services" id="services">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <span class="section-tag">Что я делаю</span>
-                    <h2>Мои компетенции</h2>
-                    <p>Создаю цифровые продукты, которые решают задачи бизнеса</p>
-                </div>
-                <div class="services-grid">
-                    <div class="service-card glass-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-icon"><i class="fab fa-telegram"></i></div>
-                        <h3>Telegram боты</h3>
-                        <p>Автоматизация продаж, рассылки, чат-боты, мини-приложения (WebApp), админ-панели.</p>
-                        <ul class="service-features">
-                            <li><i class="fas fa-check"></i> Aiogram / Telebot</li>
-                            <li><i class="fas fa-check"></i> Интеграция с любыми API</li>
-                            <li><i class="fas fa-check"></i> Базы данных (PostgreSQL, MySQL)</li>
-                            <li><i class="fas fa-check"></i> Админ-панель в боте</li>
-                            <li><i class="fas fa-check"></i> Платежные системы (ЮKassa, Stripe)</li>
-                        </ul>
-                    </div>
-                    <div class="service-card glass-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-icon"><i class="fas fa-globe"></i></div>
-                        <h3>Сайты</h3>
-                        <p>Лендинги, корпоративные сайты, интернет-магазины, админ-панели, адаптивная верстка.</p>
-                        <ul class="service-features">
-                            <li><i class="fas fa-check"></i> React / Vue / Чистый код</li>
-                            <li><i class="fas fa-check"></i> Анимации и UI/UX</li>
-                            <li><i class="fas fa-check"></i> Оптимизация SEO</li>
-                            <li><i class="fas fa-check"></i> Интеграция с CRM</li>
-                            <li><i class="fas fa-check"></i> Скорость загрузки 95+ PageSpeed</li>
-                        </ul>
-                    </div>
-                    <div class="service-card glass-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-                        <h3>Приложения</h3>
-                        <p>Кроссплатформенные мобильные приложения (iOS/Android) и PWA для бизнеса.</p>
-                        <ul class="service-features">
-                            <li><i class="fas fa-check"></i> React Native / Flutter</li>
-                            <li><i class="fas fa-check"></i> Push-уведомления</li>
-                            <li><i class="fas fa-check"></i> Интеграция с сервером</li>
-                            <li><i class="fas fa-check"></i> Публикация в App Store и Google Play</li>
-                            <li><i class="fas fa-check"></i> Офлайн-режим</li>
-                        </ul>
-                    </div>
-                </div>
+      <section id="services">
+        <div class="container">
+          <div class="section-header fade-up">
+            <div class="section-tag">Что я делаю</div>
+            <h2>Мои компетенции</h2>
+            <p>Создаю цифровые продукты, которые решают задачи бизнеса</p>
+          </div>
+          <div class="services-grid">
+            <div class="card fade-up">
+              <div class="card-icon"><i class="fab fa-telegram"></i></div>
+              <h3>Telegram боты</h3>
+              <p>Автоматизация, чат-боты, мини-приложения, админ-панели.</p>
+              <ul class="feature-list">
+                <li><i class="fas fa-check"></i> Aiogram / Telebot</li>
+                <li><i class="fas fa-check"></i> Интеграция с API</li>
+                <li><i class="fas fa-check"></i> Базы данных</li>
+              </ul>
             </div>
-        </section>
+            <div class="card fade-up">
+              <div class="card-icon"><i class="fas fa-globe"></i></div>
+              <h3>Сайты</h3>
+              <p>
+                Лендинги, корпоративные, интернет-магазины, адаптивная верстка.
+              </p>
+              <ul class="feature-list">
+                <li><i class="fas fa-check"></i> React / Vue / Чистый код</li>
+                <li><i class="fas fa-check"></i> Анимации и UI/UX</li>
+                <li><i class="fas fa-check"></i> SEO-оптимизация</li>
+              </ul>
+            </div>
+            <div class="card fade-up">
+              <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+              <h3>Приложения</h3>
+              <p>iOS/Android, PWA, кроссплатформа, Push-уведомления.</p>
+              <ul class="feature-list">
+                <li><i class="fas fa-check"></i> React Native / Flutter</li>
+                <li><i class="fas fa-check"></i> Публикация в сторах</li>
+                <li><i class="fas fa-check"></i> Офлайн-режим</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- КЕЙСЫ -->
-        <section class="cases" id="cases">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <span class="section-tag">Портфолио</span>
-                    <h2>Реализованные проекты</h2>
-                    <p>Больше кейсов в моем Telegram-канале</p>
-                </div>
-                <div class="cases-showcase">
-                    <div class="cases-telegram-card glass-card" data-aos="zoom-in" data-aos-duration="800">
-                        <div class="cases-telegram-icon">
-                            <i class="fab fa-telegram"></i>
-                        </div>
-                        <h3>Смотреть все проекты</h3>
-                        <p>Более 20 реализованных проектов: сайты, боты, приложения с реальными результатами и отзывами</p>
-                        <a href="https://t.me/Dob_Cases" target="_blank" class="btn btn-primary">
-                            <i class="fab fa-telegram"></i> Перейти в канал с кейсами
-                        </a>
-                        <div class="cases-preview">
-                            <span>📱 Mini Apps</span>
-                            <span>🌐 Сайты</span>
-                            <span>🤖 Боты</span>
-                            <span>📊 Кейсы</span>
-                        </div>
-                    </div>
-                </div>
+      <section id="cases">
+        <div class="container">
+          <div class="section-header fade-up">
+            <div class="section-tag">Портфолио</div>
+            <h2>Реализованные проекты</h2>
+            <p>Больше кейсов в Telegram-канале</p>
+          </div>
+          <div class="cases-showcase fade-up">
+            <div class="telegram-card">
+              <div class="telegram-icon"><i class="fab fa-telegram"></i></div>
+              <h3>Смотреть все проекты</h3>
+              <p>
+                Более 20 реализованных проектов: сайты, боты, приложения с
+                результатами и отзывами
+              </p>
+              <div class="case-tags">
+                <span>📱 Mini Apps</span><span>🌐 Сайты</span
+                ><span>🤖 Боты</span><span>📊 Кейсы</span>
+              </div>
+              <a
+                href="https://t.me/Dob_Cases"
+                target="_blank"
+                class="btn btn-primary"
+                ><i class="fab fa-telegram"></i> Перейти в канал</a
+              >
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- ЦЕНЫ -->
-        <section class="pricing" id="pricing">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <span class="section-tag">Инвестиции</span>
-                    <h2>Старт от <span class="gradient-text">3 000 ₽</span></h2>
-                    <p>Цены в 3 раза ниже рыночных — качество не страдает</p>
-                </div>
-                <div class="pricing-grid">
-                    <div class="pricing-card glass-card" data-aos="flip-left" data-aos-delay="100">
-                        <div class="pricing-icon"><i class="fab fa-telegram"></i></div>
-                        <h3>Telegram бот</h3>
-                        <div class="price">от <span>3 000</span> ₽</div>
-                        <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> Базовый функционал</li>
-                            <li><i class="fas fa-check"></i> База данных</li>
-                            <li><i class="fas fa-check"></i> Админ-панель</li>
-                            <li><i class="fas fa-check"></i> Деплой на сервер</li>
-                            <li><i class="fas fa-check"></i> Инструкция по использованию</li>
-                        </ul>
-                        <a href="https://t.me/dev_master" target="_blank" class="btn btn-small">Заказать</a>
-                    </div>
-                    <div class="pricing-card glass-card popular" data-aos="flip-up" data-aos-delay="200">
-                        <div class="popular-badge">🔥 Хит</div>
-                        <div class="pricing-icon"><i class="fas fa-globe"></i></div>
-                        <h3>Сайт</h3>
-                        <div class="price">от <span>5 000</span> ₽</div>
-                        <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> Адаптивный дизайн</li>
-                            <li><i class="fas fa-check"></i> Анимации</li>
-                            <li><i class="fas fa-check"></i> Оптимизация SEO</li>
-                            <li><i class="fas fa-check"></i> Формы + валидация</li>
-                            <li><i class="fas fa-check"></i> SSL сертификат</li>
-                        </ul>
-                        <a href="https://t.me/dev_master" target="_blank" class="btn btn-primary btn-small">Заказать</a>
-                    </div>
-                    <div class="pricing-card glass-card" data-aos="flip-right" data-aos-delay="300">
-                        <div class="pricing-icon"><i class="fas fa-mobile-alt"></i></div>
-                        <h3>Приложение</h3>
-                        <div class="price">от <span>10 000</span> ₽</div>
-                        <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> iOS + Android</li>
-                            <li><i class="fas fa-check"></i> API интеграция</li>
-                            <li><i class="fas fa-check"></i> Push-уведомления</li>
-                            <li><i class="fas fa-check"></i> Публикация в сторах</li>
-                            <li><i class="fas fa-check"></i> Поддержка 1 месяц</li>
-                        </ul>
-                        <a href="https://t.me/dev_master" target="_blank" class="btn btn-small">Заказать</a>
-                    </div>
-                </div>
+      <section id="pricing">
+        <div class="container">
+          <div class="section-header fade-up">
+            <div class="section-tag">Инвестиции</div>
+            <h2>Старт от <span style="color: #5b3cff">3 000 ₽</span></h2>
+            <p>Цены в 3 раза ниже рыночных</p>
+          </div>
+          <div class="pricing-grid">
+            <div class="card fade-up">
+              <div class="card-icon"><i class="fab fa-telegram"></i></div>
+              <h3>Telegram бот</h3>
+              <div style="font-size: 2rem; font-weight: 600; margin: 16px 0">
+                от 3 000 ₽
+              </div>
+              <ul class="feature-list">
+                <li><i class="fas fa-check"></i> Базовый функционал</li>
+                <li><i class="fas fa-check"></i> База данных</li>
+                <li><i class="fas fa-check"></i> Админ-панель</li>
+              </ul>
+              <a
+                href="https://t.me/dev_master"
+                target="_blank"
+                class="btn btn-outline"
+                style="margin-top: 20px"
+                >Заказать</a
+              >
             </div>
-        </section>
+            <div class="card fade-up">
+              <div class="card-icon"><i class="fas fa-globe"></i></div>
+              <h3>Сайт</h3>
+              <div style="font-size: 2rem; font-weight: 600; margin: 16px 0">
+                от 5 000 ₽
+              </div>
+              <ul class="feature-list">
+                <li><i class="fas fa-check"></i> Адаптивный дизайн</li>
+                <li><i class="fas fa-check"></i> Анимации</li>
+                <li><i class="fas fa-check"></i> SEO-оптимизация</li>
+              </ul>
+              <a
+                href="https://t.me/dev_master"
+                target="_blank"
+                class="btn btn-primary"
+                >Заказать</a
+              >
+            </div>
+            <div class="card fade-up">
+              <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+              <h3>Приложение</h3>
+              <div style="font-size: 2rem; font-weight: 600; margin: 16px 0">
+                от 10 000 ₽
+              </div>
+              <ul class="feature-list">
+                <li><i class="fas fa-check"></i> iOS + Android</li>
+                <li><i class="fas fa-check"></i> Push-уведомления</li>
+                <li><i class="fas fa-check"></i> Публикация в сторах</li>
+              </ul>
+              <a
+                href="https://t.me/dev_master"
+                target="_blank"
+                class="btn btn-outline"
+                style="margin-top: 20px"
+                >Заказать</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- ПРЕИМУЩЕСТВА -->
-        <section class="advantages" id="advantages">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <span class="section-tag">Преимущества</span>
-                    <h2>Почему выбирают меня</h2>
-                    <p>Работаю на результат, а не на количество проектов</p>
-                </div>
-                <div class="advantages-grid">
-                    <div class="advantage-item" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="advantage-icon"><i class="fas fa-rocket"></i></div>
-                        <h3>Быстро</h3>
-                        <p>Средний срок разработки — от 3 до 10 дней. Ценю ваше время и дедлайны.</p>
-                    </div>
-                    <div class="advantage-item" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="advantage-icon"><i class="fas fa-coins"></i></div>
-                        <h3>Дешево</h3>
-                        <p>Цены ниже рынка в 3 раза без потери качества. Работаю напрямую, без посредников.</p>
-                    </div>
-                    <div class="advantage-item" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="advantage-icon"><i class="fas fa-gem"></i></div>
-                        <h3>Современно</h3>
-                        <p>Стеклянный дизайн, неон, анимации, трендовый UI/UX. Только актуальные технологии.</p>
-                    </div>
-                    <div class="advantage-item" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="advantage-icon"><i class="fas fa-headset"></i></div>
-                        <h3>Поддержка</h3>
-                        <p>Бесплатное сопровождение 1 месяц. Отвечаю в Telegram в течение часа.</p>
-                    </div>
-                    <div class="advantage-item" data-aos="zoom-in" data-aos-delay="500">
-                        <div class="advantage-icon"><i class="fas fa-code"></i></div>
-                        <h3>Чистый код</h3>
-                        <p>Пишу понятный, документированный код. Легко поддерживать и дорабатывать.</p>
-                    </div>
-                    <div class="advantage-item" data-aos="zoom-in" data-aos-delay="600">
-                        <div class="advantage-icon"><i class="fas fa-chart-line"></i></div>
-                        <h3>Результат</h3>
-                        <p>Ориентируюсь на бизнес-показатели: рост продаж, конверсия, автоматизация.</p>
-                    </div>
-                </div>
+      <section id="advantages">
+        <div class="container">
+          <div class="section-header fade-up">
+            <div class="section-tag">Почему я</div>
+            <h2>Работаю на результат</h2>
+            <p>Быстро, дёшево, современно</p>
+          </div>
+          <div class="advantages-grid">
+            <div class="fade-up">
+              <div class="advantage-icon"><i class="fas fa-rocket"></i></div>
+              <h3>Быстро</h3>
+              <p>Сроки от 3 до 10 дней</p>
             </div>
-        </section>
+            <div class="fade-up">
+              <div class="advantage-icon"><i class="fas fa-coins"></i></div>
+              <h3>Дешево</h3>
+              <p>Цены ниже рынка в 3 раза</p>
+            </div>
+            <div class="fade-up">
+              <div class="advantage-icon"><i class="fas fa-gem"></i></div>
+              <h3>Современно</h3>
+              <p>Стекло, неон, анимации</p>
+            </div>
+            <div class="fade-up">
+              <div class="advantage-icon"><i class="fas fa-headset"></i></div>
+              <h3>Поддержка</h3>
+              <p>Бесплатно 1 месяц</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- CTA -->
-        <section class="cta" id="contact">
-            <div class="container">
-                <div class="cta-content glass-card" data-aos="flip-up" data-aos-duration="1000">
-                    <h2>Напиши мне — обсудим проект</h2>
-                    <p>Расскажите о своей идее, и я предложу оптимальное решение в течение часа.<br>Бесплатная консультация — без обязательств.</p>
-                    <div class="cta-buttons">
-                        <a href="https://t.me/dev_master" target="_blank" class="btn btn-primary btn-large">
-                            <i class="fab fa-telegram"></i> Написать в Telegram
-                        </a>
-                    </div>
-                    <div class="cta-contact-info">
-                        <span><i class="fas fa-clock"></i> Отвечаю в течение часа</span>
-                        <span><i class="fas fa-shield-alt"></i> Работаю официально</span>
-                        <span><i class="fas fa-ruble-sign"></i> Фиксированные цены</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-logo">
-                        <h3>Dev<span>Studio</span></h3>
-                        <p>Создаю цифровые продукты, которые работают</p>
-                        <div class="footer-contacts">
-                            <a href="https://t.me/dev_master" target="_blank"><i class="fab fa-telegram"></i> @dev_master</a>
-                        </div>
-                    </div>
-                    <div class="footer-links">
-                        <h4>Навигация</h4>
-                        <a href="#services">Услуги</a>
-                        <a href="#cases">Кейсы</a>
-                        <a href="#pricing">Цены</a>
-                        <a href="#advantages">Преимущества</a>
-                    </div>
-                    <div class="footer-social">
-                        <h4>Соцсети</h4>
-                        <div class="social-icons">
-                            <a href="https://t.me/dev_master" target="_blank"><i class="fab fa-telegram"></i></a>
-                            <a href="https://t.me/Dob_Cases" target="_blank"><i class="fas fa-folder-open"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>© 2025 DevStudio. Все права защищены. Разработка сайтов, ботов и приложений.</p>
-                </div>
-            </div>
-        </section>
+      <section id="contact">
+        <div class="container">
+          <div class="cta-block fade-up">
+            <h2>Напиши мне — обсудим проект</h2>
+            <p>Расскажите об идее, я предложу решение в течение часа</p>
+            <a
+              href="https://t.me/dev_master"
+              target="_blank"
+              class="btn btn-primary btn-large"
+              ><i class="fab fa-telegram"></i> Написать в Telegram</a
+            >
+          </div>
+        </div>
+      </section>
     </main>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/script.js"></script>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h3>Dev<span>Studio</span></h3>
+            <p>Создаю продукты, которые работают</p>
+          </div>
+          <div class="footer-links">
+            <a href="#services">Услуги</a><a href="#cases">Кейсы</a
+            ><a href="#pricing">Цены</a><a href="#advantages">Почему я</a>
+          </div>
+          <div class="footer-social">
+            <a href="https://t.me/dev_master" target="_blank"
+              ><i class="fab fa-telegram"></i></a
+            ><a href="https://t.me/Dob_Cases" target="_blank"
+              ><i class="fas fa-folder-open"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 DevStudio. Разработка сайтов, ботов и приложений.</p>
+        </div>
+      </div>
+    </footer>
+
     <script>
-        // Инициализация AOS
-        AOS.init({ duration: 800, once: true, offset: 100 });
-        
-        // Мобильное меню
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.querySelector('.nav-links');
-        if (menuToggle) {
-            menuToggle.addEventListener('click', () => {
-                if (navLinks.style.display === 'flex') {
-                    navLinks.style.display = 'none';
-                } else {
-                    navLinks.style.display = 'flex';
-                    navLinks.style.flexDirection = 'column';
-                    navLinks.style.position = 'absolute';
-                    navLinks.style.top = '70px';
-                    navLinks.style.left = '0';
-                    navLinks.style.width = '100%';
-                    navLinks.style.background = 'rgba(10, 12, 21, 0.95)';
-                    navLinks.style.backdropFilter = 'blur(12px)';
-                    navLinks.style.padding = '20px';
-                    navLinks.style.gap = '20px';
-                    navLinks.style.zIndex = '999';
-                }
-            });
-        }
-        
-        // Плавный скролл
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
+      // плавное появление при скролле
+      const fadeElements = document.querySelectorAll(".fade-up");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -30px 0px" },
+      );
+      fadeElements.forEach((el) => observer.observe(el));
+
+      // мобильное меню
+      const toggle = document.getElementById("menuToggle");
+      const navLinks = document.querySelector(".nav-links");
+      if (toggle) {
+        toggle.addEventListener("click", () => {
+          if (navLinks.style.display === "flex") {
+            navLinks.style.display = "none";
+          } else {
+            navLinks.style.display = "flex";
+            navLinks.style.flexDirection = "column";
+            navLinks.style.position = "absolute";
+            navLinks.style.top = "70px";
+            navLinks.style.left = "0";
+            navLinks.style.width = "100%";
+            navLinks.style.background = "#0B0B0F";
+            navLinks.style.backdropFilter = "blur(12px)";
+            navLinks.style.padding = "24px";
+            navLinks.style.gap = "24px";
+            navLinks.style.borderBottom = "1px solid #1E2028";
+          }
         });
-        
-        // Анимация курсора
-        const cursor = document.querySelector('.cursor-glow');
-        if (cursor) {
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-            });
-        }
-        
-        console.log('Сайт загружен!');
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth" });
+            if (window.innerWidth <= 768) navLinks.style.display = "none";
+          }
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
