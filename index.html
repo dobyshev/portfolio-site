@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
-    <title>DevStudio — разработка под ключ</title>
+    <title>dobyshev-prod — разработка под ключ</title>
     <meta
       name="description"
       content="Создаю сайты, Telegram-ботов и приложения. Быстро, качественно, дешевле рынка в 3 раза."
@@ -46,6 +46,24 @@
       .fade-up.visible {
         opacity: 1;
         transform: translateY(0);
+      }
+
+      /* анимация для главного заголовка */
+      @keyframes titleGlow {
+        0% {
+          opacity: 0;
+          transform: scale(0.95);
+          letter-spacing: -0.03em;
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+          letter-spacing: -0.02em;
+        }
+      }
+
+      .animated-title {
+        animation: titleGlow 0.9s cubic-bezier(0.2, 0.9, 0.4, 1) forwards;
       }
 
       .container {
@@ -475,7 +493,7 @@
   <body>
     <nav class="navbar">
       <div class="container nav-container">
-        <a href="#" class="logo">Dev<span>Studio</span></a>
+        <a href="#" class="logo">dobyshev<span>-prod</span></a>
         <div class="nav-links">
           <a href="#services">Услуги</a>
           <a href="#cases">Кейсы</a>
@@ -495,9 +513,8 @@
           <div class="hero-badge fade-up">
             ⭐ Премиум качество · Доступные цены
           </div>
-          <h1 class="hero-title fade-up">
-            Разработка сайтов, ботов <br />
-            и приложений <span class="accent">под ключ</span>
+          <h1 class="hero-title animated-title">
+            dobyshev<span class="accent">-prod</span>
           </h1>
           <p class="hero-subtitle fade-up">
             Делаю быстро, качественно и <strong>дешевле рынка в 3 раза</strong>.
@@ -505,7 +522,7 @@
           </p>
           <div class="hero-buttons fade-up">
             <a
-              href="https://t.me/dev_master"
+              href="https://t.me/gdedob"
               target="_blank"
               class="btn btn-primary"
               ><i class="fab fa-telegram"></i> Написать в Telegram</a
@@ -625,7 +642,7 @@
                 <li><i class="fas fa-check"></i> Админ-панель</li>
               </ul>
               <a
-                href="https://t.me/dev_master"
+                href="https://t.me/gdedob"
                 target="_blank"
                 class="btn btn-outline"
                 style="margin-top: 20px"
@@ -644,7 +661,7 @@
                 <li><i class="fas fa-check"></i> SEO-оптимизация</li>
               </ul>
               <a
-                href="https://t.me/dev_master"
+                href="https://t.me/gdedob"
                 target="_blank"
                 class="btn btn-primary"
                 >Заказать</a
@@ -662,7 +679,7 @@
                 <li><i class="fas fa-check"></i> Публикация в сторах</li>
               </ul>
               <a
-                href="https://t.me/dev_master"
+                href="https://t.me/gdedob"
                 target="_blank"
                 class="btn btn-outline"
                 style="margin-top: 20px"
@@ -711,7 +728,7 @@
             <h2>Напиши мне — обсудим проект</h2>
             <p>Расскажите об идее, я предложу решение в течение часа</p>
             <a
-              href="https://t.me/dev_master"
+              href="https://t.me/gdedob"
               target="_blank"
               class="btn btn-primary btn-large"
               ><i class="fab fa-telegram"></i> Написать в Telegram</a
@@ -725,7 +742,7 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-logo">
-            <h3>Dev<span>Studio</span></h3>
+            <h3>dobyshev<span>-prod</span></h3>
             <p>Создаю продукты, которые работают</p>
           </div>
           <div class="footer-links">
@@ -733,15 +750,19 @@
             ><a href="#pricing">Цены</a><a href="#advantages">Почему я</a>
           </div>
           <div class="footer-social">
-            <a href="https://t.me/dev_master" target="_blank"
-              ><i class="fab fa-telegram"></i></a
-            ><a href="https://t.me/Dob_Cases" target="_blank"
+            <a href="https://t.me/gdedob" target="_blank"
+              ><i class="fab fa-telegram"></i
+            ></a>
+            <a href="https://t.me/Dob_Cases" target="_blank"
               ><i class="fas fa-folder-open"></i
+            ></a>
+            <a href="https://t.me/dobnetut" target="_blank"
+              ><i class="fas fa-user-circle"></i
             ></a>
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2025 DevStudio. Разработка сайтов, ботов и приложений.</p>
+          <p>© 2025 dobyshev-prod. Разработка сайтов, ботов и приложений.</p>
         </div>
       </div>
     </footer>
