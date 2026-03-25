@@ -34,36 +34,48 @@
         scroll-behavior: smooth;
       }
 
-      /* плавное появление для всех секций */
+      /* плавное появление */
       .fade-up {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(24px);
         transition:
           opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1),
           transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1);
       }
-
       .fade-up.visible {
         opacity: 1;
         transform: translateY(0);
       }
 
-      /* анимация для главного заголовка */
-      @keyframes titleGlow {
+      /* анимация заголовка */
+      @keyframes titleReveal {
         0% {
           opacity: 0;
-          transform: scale(0.95);
+          transform: scale(0.96);
           letter-spacing: -0.03em;
+          filter: blur(4px);
         }
         100% {
           opacity: 1;
           transform: scale(1);
           letter-spacing: -0.02em;
+          filter: blur(0);
         }
       }
-
       .animated-title {
-        animation: titleGlow 0.9s cubic-bezier(0.2, 0.9, 0.4, 1) forwards;
+        animation: titleReveal 0.8s cubic-bezier(0.2, 0.9, 0.4, 1) forwards;
+      }
+
+      /* кастомный скролл */
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #111216;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #5b3cff;
+        border-radius: 10px;
       }
 
       .container {
@@ -78,55 +90,49 @@
         top: 0;
         left: 0;
         width: 100%;
-        background: rgba(11, 11, 15, 0.85);
-        backdrop-filter: blur(12px);
+        background: rgba(11, 11, 15, 0.75);
+        backdrop-filter: blur(16px);
         z-index: 100;
-        padding: 20px 0;
+        padding: 18px 0;
         border-bottom: 1px solid rgba(91, 60, 255, 0.2);
       }
-
       .nav-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
-
       .logo {
-        font-size: 1.6rem;
-        font-weight: 700;
+        font-size: 1.5rem;
+        font-weight: 600;
         text-decoration: none;
         color: white;
         letter-spacing: -0.02em;
       }
-
       .logo span {
         color: #5b3cff;
+        font-weight: 700;
       }
-
       .nav-links {
         display: flex;
         gap: 40px;
         align-items: center;
       }
-
       .nav-links a {
         color: #b4c0e0;
         text-decoration: none;
+        font-size: 0.95rem;
         font-weight: 450;
         transition: 0.2s ease;
       }
-
       .nav-links a:hover {
         color: #5b3cff;
       }
-
       .nav-cta {
         background: rgba(91, 60, 255, 0.12);
-        padding: 8px 20px;
+        padding: 6px 18px;
         border-radius: 40px;
         border: 1px solid rgba(91, 60, 255, 0.5);
       }
-
       .menu-toggle {
         display: none;
         font-size: 1.5rem;
@@ -138,327 +144,341 @@
         min-height: 90vh;
         display: flex;
         align-items: center;
-        padding: 140px 0 80px;
+        padding: 130px 0 70px;
       }
-
       .hero-content {
-        max-width: 900px;
+        max-width: 880px;
       }
-
       .hero-badge {
         display: inline-block;
         background: rgba(91, 60, 255, 0.1);
-        padding: 6px 16px;
+        padding: 5px 14px;
         border-radius: 100px;
-        font-size: 0.8rem;
-        margin-bottom: 24px;
+        font-size: 0.75rem;
+        margin-bottom: 20px;
         color: #8f74ff;
+        letter-spacing: 0.3px;
       }
-
       .hero-title {
-        font-size: clamp(2.8rem, 6vw, 4.8rem);
+        font-size: clamp(2.8rem, 6vw, 4.5rem);
         font-weight: 700;
-        line-height: 1.2;
-        margin-bottom: 24px;
+        line-height: 1.15;
+        margin-bottom: 20px;
         letter-spacing: -0.02em;
       }
-
       .hero-title .accent {
         color: #5b3cff;
       }
-
       .hero-subtitle {
-        font-size: 1.2rem;
+        font-size: 1rem;
         color: #b4c0e0;
-        margin-bottom: 40px;
-        max-width: 600px;
+        margin-bottom: 36px;
+        max-width: 560px;
+        line-height: 1.5;
       }
-
       .hero-buttons {
         display: flex;
-        gap: 20px;
+        gap: 18px;
         flex-wrap: wrap;
-        margin-bottom: 60px;
+        margin-bottom: 56px;
       }
-
       .btn {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 12px 32px;
+        padding: 10px 28px;
         border-radius: 40px;
         font-weight: 500;
+        font-size: 0.9rem;
         text-decoration: none;
-        transition: 0.2s ease;
+        transition: 0.25s ease;
         background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.15);
         color: white;
       }
-
       .btn-primary {
-        background: #5b3cff;
+        background: linear-gradient(135deg, #5b3cff 0%, #7848e0 100%);
         border: none;
-        box-shadow: 0 8px 20px rgba(91, 60, 255, 0.3);
+        box-shadow: 0 6px 18px rgba(91, 60, 255, 0.3);
       }
-
       .btn-primary:hover {
-        transform: translateY(-3px);
-        background: #4a2cd8;
-        box-shadow: 0 12px 25px rgba(91, 60, 255, 0.4);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(91, 60, 255, 0.4);
+        background: linear-gradient(135deg, #6848ff, #5b3cff);
       }
-
       .btn-outline:hover {
         border-color: #5b3cff;
         background: rgba(91, 60, 255, 0.05);
+        transform: translateY(-2px);
       }
-
       .stats {
         display: flex;
         gap: 48px;
         flex-wrap: wrap;
       }
-
       .stat-number {
-        font-size: 2rem;
+        font-size: 1.8rem;
         font-weight: 700;
         color: #5b3cff;
       }
-
       .stat-label {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         color: #8f9bb5;
       }
 
       /* секции */
       section {
-        padding: 100px 0;
+        padding: 80px 0;
       }
-
       .section-header {
         text-align: center;
-        margin-bottom: 64px;
+        margin-bottom: 56px;
       }
-
       .section-tag {
         display: inline-block;
         background: rgba(91, 60, 255, 0.1);
         padding: 4px 12px;
         border-radius: 40px;
-        font-size: 0.75rem;
-        margin-bottom: 16px;
+        font-size: 0.7rem;
+        margin-bottom: 14px;
         color: #8f74ff;
       }
-
       .section-header h2 {
-        font-size: 2.5rem;
+        font-size: 2rem;
         font-weight: 600;
-        margin-bottom: 16px;
+        margin-bottom: 12px;
+        letter-spacing: -0.01em;
       }
-
       .section-header p {
         color: #8f9bb5;
-        font-size: 1rem;
+        font-size: 0.9rem;
       }
 
       /* карточки */
       .services-grid,
       .pricing-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 32px;
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+        gap: 28px;
       }
-
       .card {
         background: #111216;
         border-radius: 32px;
-        padding: 32px;
-        transition: 0.3s ease;
+        padding: 28px;
+        transition: all 0.3s ease;
         border: 1px solid #1e2028;
+        position: relative;
+        overflow: hidden;
       }
-
+      .card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 30% 20%,
+          rgba(91, 60, 255, 0.08),
+          transparent 70%
+        );
+        opacity: 0;
+        transition: opacity 0.4s;
+        pointer-events: none;
+      }
+      .card:hover::after {
+        opacity: 1;
+      }
       .card:hover {
-        transform: translateY(-6px);
+        transform: translateY(-5px);
         border-color: #5b3cff;
-        box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.6);
       }
-
       .card-icon {
-        font-size: 2.4rem;
-        margin-bottom: 20px;
+        font-size: 2rem;
+        margin-bottom: 18px;
         color: #5b3cff;
       }
-
       .card h3 {
-        font-size: 1.5rem;
-        margin-bottom: 12px;
+        font-size: 1.3rem;
+        margin-bottom: 8px;
         font-weight: 500;
       }
-
       .card p {
         color: #a0a8c0;
-        margin-bottom: 24px;
-        line-height: 1.5;
+        margin-bottom: 20px;
+        font-size: 0.85rem;
+        line-height: 1.45;
       }
-
       .feature-list {
         list-style: none;
       }
-
       .feature-list li {
-        margin-bottom: 10px;
-        font-size: 0.9rem;
+        margin-bottom: 8px;
+        font-size: 0.8rem;
         color: #b4c0e0;
         display: flex;
         align-items: center;
         gap: 8px;
       }
-
       .feature-list i {
         color: #5b3cff;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
       }
 
-      /* кейс — телеграм карточка */
+      /* телеграм карточка */
       .cases-showcase {
-        max-width: 700px;
+        max-width: 680px;
         margin: 0 auto;
       }
-
       .telegram-card {
         background: #111216;
         border-radius: 48px;
-        padding: 48px 40px;
+        padding: 44px 36px;
         text-align: center;
         border: 1px solid #262a36;
         transition: 0.3s ease;
       }
-
       .telegram-card:hover {
         border-color: #5b3cff;
         transform: scale(1.01);
       }
-
       .telegram-icon {
-        font-size: 3rem;
+        font-size: 2.6rem;
         color: #5b3cff;
-        margin-bottom: 20px;
-      }
-
-      .telegram-card h3 {
-        font-size: 1.8rem;
-        font-weight: 500;
         margin-bottom: 16px;
+        animation: floatIcon 3s ease-in-out infinite;
       }
-
+      @keyframes floatIcon {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+      .telegram-card h3 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 12px;
+      }
       .telegram-card p {
         color: #a0a8c0;
-        margin-bottom: 32px;
+        margin-bottom: 28px;
+        font-size: 0.9rem;
       }
-
       .case-tags {
         display: flex;
         justify-content: center;
-        gap: 12px;
-        margin: 32px 0 24px;
+        gap: 10px;
+        margin: 28px 0 22px;
         flex-wrap: wrap;
       }
-
       .case-tags span {
         background: #1a1c24;
-        padding: 6px 16px;
+        padding: 4px 14px;
         border-radius: 40px;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
       }
 
       /* преимущества */
       .advantages-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 40px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 32px;
         text-align: center;
       }
-
       .advantage-icon {
-        font-size: 2rem;
+        font-size: 1.8rem;
         color: #5b3cff;
-        margin-bottom: 20px;
+        margin-bottom: 14px;
+      }
+      .advantage-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 6px;
+        font-weight: 500;
+      }
+      .advantage-item p {
+        font-size: 0.8rem;
+        color: #8f9bb5;
       }
 
       /* CTA */
       .cta-block {
         background: #111216;
         border-radius: 48px;
-        padding: 64px 40px;
+        padding: 56px 40px;
         text-align: center;
         border: 1px solid #262a36;
       }
-
       .cta-block h2 {
-        font-size: 2rem;
-        margin-bottom: 16px;
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+        font-weight: 500;
       }
-
       .cta-block p {
         color: #a0a8c0;
-        margin-bottom: 32px;
+        margin-bottom: 28px;
+        font-size: 0.9rem;
       }
 
       /* футер */
       .footer {
         border-top: 1px solid #1e2028;
-        padding: 60px 0 30px;
-        margin-top: 40px;
+        padding: 48px 0 28px;
+        margin-top: 20px;
       }
-
       .footer-content {
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        gap: 32px;
+        gap: 28px;
       }
-
       .footer-logo h3 {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
+        font-weight: 500;
       }
-
       .footer-logo span {
         color: #5b3cff;
       }
-
+      .footer-logo p {
+        font-size: 0.75rem;
+        color: #6f7a98;
+        margin-top: 4px;
+      }
       .footer-links {
         display: flex;
-        gap: 32px;
+        gap: 28px;
       }
-
       .footer-links a {
         color: #a0a8c0;
         text-decoration: none;
+        font-size: 0.85rem;
         transition: 0.2s;
       }
-
       .footer-links a:hover {
         color: #5b3cff;
       }
-
       .footer-social a {
         color: #a0a8c0;
-        font-size: 1.4rem;
-        margin-left: 20px;
+        font-size: 1.3rem;
+        margin-left: 18px;
         transition: 0.2s;
       }
-
       .footer-social a:hover {
         color: #5b3cff;
+        transform: translateY(-2px);
+        display: inline-block;
       }
-
       .footer-bottom {
         text-align: center;
-        margin-top: 40px;
+        margin-top: 36px;
         padding-top: 20px;
         border-top: 1px solid #1e2028;
         color: #5f6a84;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
       }
 
       @media (max-width: 768px) {
@@ -485,7 +505,17 @@
         .footer-links {
           flex-direction: column;
           align-items: center;
-          gap: 16px;
+          gap: 12px;
+        }
+        section {
+          padding: 60px 0;
+        }
+        .hero {
+          padding: 110px 0 50px;
+        }
+        .stats {
+          gap: 32px;
+          justify-content: center;
         }
       }
     </style>
@@ -511,24 +541,24 @@
       <section class="hero">
         <div class="container hero-content">
           <div class="hero-badge fade-up">
-            ⭐ Премиум качество · Доступные цены
+            ✨ Премиум качество · Доступные цены
           </div>
           <h1 class="hero-title animated-title">
             dobyshev<span class="accent">-prod</span>
           </h1>
           <p class="hero-subtitle fade-up">
-            Делаю быстро, качественно и <strong>дешевле рынка в 3 раза</strong>.
-            Современный дизайн, чистый код, полное сопровождение.
+            Сайты, боты, приложения. <strong>Дешевле рынка в 3 раза</strong>.
+            Чистый код, современный дизайн, поддержка 24/7.
           </p>
           <div class="hero-buttons fade-up">
             <a
               href="https://t.me/gdedob"
               target="_blank"
               class="btn btn-primary"
-              ><i class="fab fa-telegram"></i> Написать в Telegram</a
+              ><i class="fab fa-telegram"></i> Написать</a
             >
             <a href="#cases" class="btn btn-outline"
-              ><i class="fas fa-arrow-right"></i> Смотреть работы</a
+              ><i class="fas fa-arrow-right"></i> Кейсы</a
             >
           </div>
           <div class="stats fade-up">
@@ -538,11 +568,11 @@
             </div>
             <div>
               <div class="stat-number">3 дня</div>
-              <div class="stat-label">мин. срок</div>
+              <div class="stat-label">старт</div>
             </div>
             <div>
               <div class="stat-number">24/7</div>
-              <div class="stat-label">поддержка</div>
+              <div class="stat-label">онлайн</div>
             </div>
           </div>
         </div>
@@ -551,41 +581,39 @@
       <section id="services">
         <div class="container">
           <div class="section-header fade-up">
-            <div class="section-tag">Что я делаю</div>
-            <h2>Мои компетенции</h2>
-            <p>Создаю цифровые продукты, которые решают задачи бизнеса</p>
+            <div class="section-tag">направления</div>
+            <h2>Что создаю</h2>
+            <p>Под ключ, с душой и вниманием к деталям</p>
           </div>
           <div class="services-grid">
             <div class="card fade-up">
               <div class="card-icon"><i class="fab fa-telegram"></i></div>
               <h3>Telegram боты</h3>
-              <p>Автоматизация, чат-боты, мини-приложения, админ-панели.</p>
+              <p>Автоматизация, чат-боты, мини‑приложения, админ‑панели.</p>
               <ul class="feature-list">
                 <li><i class="fas fa-check"></i> Aiogram / Telebot</li>
-                <li><i class="fas fa-check"></i> Интеграция с API</li>
-                <li><i class="fas fa-check"></i> Базы данных</li>
+                <li><i class="fas fa-check"></i> API + базы данных</li>
+                <li><i class="fas fa-check"></i> Платежи, рассылки</li>
               </ul>
             </div>
             <div class="card fade-up">
               <div class="card-icon"><i class="fas fa-globe"></i></div>
               <h3>Сайты</h3>
-              <p>
-                Лендинги, корпоративные, интернет-магазины, адаптивная верстка.
-              </p>
+              <p>Лендинги, корпоративные, магазины, адаптивная верстка.</p>
               <ul class="feature-list">
-                <li><i class="fas fa-check"></i> React / Vue / Чистый код</li>
-                <li><i class="fas fa-check"></i> Анимации и UI/UX</li>
-                <li><i class="fas fa-check"></i> SEO-оптимизация</li>
+                <li><i class="fas fa-check"></i> React / Vue / чистый код</li>
+                <li><i class="fas fa-check"></i> Анимации, UI/UX</li>
+                <li><i class="fas fa-check"></i> SEO, скорость 95+</li>
               </ul>
             </div>
             <div class="card fade-up">
               <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
               <h3>Приложения</h3>
-              <p>iOS/Android, PWA, кроссплатформа, Push-уведомления.</p>
+              <p>iOS/Android, PWA, кроссплатформа, push‑уведомления.</p>
               <ul class="feature-list">
                 <li><i class="fas fa-check"></i> React Native / Flutter</li>
                 <li><i class="fas fa-check"></i> Публикация в сторах</li>
-                <li><i class="fas fa-check"></i> Офлайн-режим</li>
+                <li><i class="fas fa-check"></i> Офлайн‑режим</li>
               </ul>
             </div>
           </div>
@@ -595,17 +623,16 @@
       <section id="cases">
         <div class="container">
           <div class="section-header fade-up">
-            <div class="section-tag">Портфолио</div>
+            <div class="section-tag">портфолио</div>
             <h2>Реализованные проекты</h2>
-            <p>Больше кейсов в Telegram-канале</p>
+            <p>Больше кейсов в Telegram</p>
           </div>
           <div class="cases-showcase fade-up">
             <div class="telegram-card">
               <div class="telegram-icon"><i class="fab fa-telegram"></i></div>
-              <h3>Смотреть все проекты</h3>
+              <h3>Канал с кейсами</h3>
               <p>
-                Более 20 реализованных проектов: сайты, боты, приложения с
-                результатами и отзывами
+                20+ проектов: сайты, боты, приложения с результатами и отзывами
               </p>
               <div class="case-tags">
                 <span>📱 Mini Apps</span><span>🌐 Сайты</span
@@ -615,7 +642,7 @@
                 href="https://t.me/Dob_Cases"
                 target="_blank"
                 class="btn btn-primary"
-                ><i class="fab fa-telegram"></i> Перейти в канал</a
+                ><i class="fab fa-telegram"></i> Перейти</a
               >
             </div>
           </div>
@@ -625,15 +652,15 @@
       <section id="pricing">
         <div class="container">
           <div class="section-header fade-up">
-            <div class="section-tag">Инвестиции</div>
+            <div class="section-tag">инвестиции</div>
             <h2>Старт от <span style="color: #5b3cff">3 000 ₽</span></h2>
-            <p>Цены в 3 раза ниже рыночных</p>
+            <p>Цены ниже рынка в 3 раза</p>
           </div>
           <div class="pricing-grid">
             <div class="card fade-up">
               <div class="card-icon"><i class="fab fa-telegram"></i></div>
               <h3>Telegram бот</h3>
-              <div style="font-size: 2rem; font-weight: 600; margin: 16px 0">
+              <div style="font-size: 1.8rem; font-weight: 600; margin: 12px 0">
                 от 3 000 ₽
               </div>
               <ul class="feature-list">
@@ -652,7 +679,7 @@
             <div class="card fade-up">
               <div class="card-icon"><i class="fas fa-globe"></i></div>
               <h3>Сайт</h3>
-              <div style="font-size: 2rem; font-weight: 600; margin: 16px 0">
+              <div style="font-size: 1.8rem; font-weight: 600; margin: 12px 0">
                 от 5 000 ₽
               </div>
               <ul class="feature-list">
@@ -670,7 +697,7 @@
             <div class="card fade-up">
               <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
               <h3>Приложение</h3>
-              <div style="font-size: 2rem; font-weight: 600; margin: 16px 0">
+              <div style="font-size: 1.8rem; font-weight: 600; margin: 12px 0">
                 от 10 000 ₽
               </div>
               <ul class="feature-list">
@@ -693,29 +720,29 @@
       <section id="advantages">
         <div class="container">
           <div class="section-header fade-up">
-            <div class="section-tag">Почему я</div>
+            <div class="section-tag">почему я</div>
             <h2>Работаю на результат</h2>
             <p>Быстро, дёшево, современно</p>
           </div>
           <div class="advantages-grid">
-            <div class="fade-up">
+            <div class="advantage-item fade-up">
               <div class="advantage-icon"><i class="fas fa-rocket"></i></div>
-              <h3>Быстро</h3>
-              <p>Сроки от 3 до 10 дней</p>
+              <h3>Сроки от 3 дней</h3>
+              <p>Ценю ваше время</p>
             </div>
-            <div class="fade-up">
+            <div class="advantage-item fade-up">
               <div class="advantage-icon"><i class="fas fa-coins"></i></div>
-              <h3>Дешево</h3>
-              <p>Цены ниже рынка в 3 раза</p>
+              <h3>Цены ниже рынка</h3>
+              <p>В 3 раза без потери качества</p>
             </div>
-            <div class="fade-up">
+            <div class="advantage-item fade-up">
               <div class="advantage-icon"><i class="fas fa-gem"></i></div>
-              <h3>Современно</h3>
+              <h3>Современный дизайн</h3>
               <p>Стекло, неон, анимации</p>
             </div>
-            <div class="fade-up">
+            <div class="advantage-item fade-up">
               <div class="advantage-icon"><i class="fas fa-headset"></i></div>
-              <h3>Поддержка</h3>
+              <h3>Поддержка 24/7</h3>
               <p>Бесплатно 1 месяц</p>
             </div>
           </div>
@@ -725,13 +752,13 @@
       <section id="contact">
         <div class="container">
           <div class="cta-block fade-up">
-            <h2>Напиши мне — обсудим проект</h2>
-            <p>Расскажите об идее, я предложу решение в течение часа</p>
+            <h2>Обсудим ваш проект?</h2>
+            <p>Напишите — отвечу в течение часа. Без обязательств.</p>
             <a
               href="https://t.me/gdedob"
               target="_blank"
               class="btn btn-primary btn-large"
-              ><i class="fab fa-telegram"></i> Написать в Telegram</a
+              ><i class="fab fa-telegram"></i> Написать</a
             >
           </div>
         </div>
@@ -743,7 +770,7 @@
         <div class="footer-content">
           <div class="footer-logo">
             <h3>dobyshev<span>-prod</span></h3>
-            <p>Создаю продукты, которые работают</p>
+            <p>разработка под ключ</p>
           </div>
           <div class="footer-links">
             <a href="#services">Услуги</a><a href="#cases">Кейсы</a
@@ -762,27 +789,23 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2025 dobyshev-prod. Разработка сайтов, ботов и приложений.</p>
+          <p>© 2025 dobyshev-prod. Сайты, боты, приложения.</p>
         </div>
       </div>
     </footer>
 
     <script>
-      // плавное появление при скролле
       const fadeElements = document.querySelectorAll(".fade-up");
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
+            if (entry.isIntersecting) entry.target.classList.add("visible");
           });
         },
-        { threshold: 0.15, rootMargin: "0px 0px -30px 0px" },
+        { threshold: 0.15, rootMargin: "0px 0px -20px 0px" },
       );
       fadeElements.forEach((el) => observer.observe(el));
 
-      // мобильное меню
       const toggle = document.getElementById("menuToggle");
       const navLinks = document.querySelector(".nav-links");
       if (toggle) {
@@ -797,10 +820,11 @@
             navLinks.style.left = "0";
             navLinks.style.width = "100%";
             navLinks.style.background = "#0B0B0F";
-            navLinks.style.backdropFilter = "blur(12px)";
+            navLinks.style.backdropFilter = "blur(16px)";
             navLinks.style.padding = "24px";
-            navLinks.style.gap = "24px";
+            navLinks.style.gap = "20px";
             navLinks.style.borderBottom = "1px solid #1E2028";
+            navLinks.style.zIndex = "99";
           }
         });
       }
